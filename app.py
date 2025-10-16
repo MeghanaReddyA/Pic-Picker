@@ -13,14 +13,15 @@ def index():
 @app.route('/data')
 def get_updated_date():
     #Fetch data from Excel file and return as JSON.
-    file_path = 'data.xlsx'
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    data_path = os.path.join(base_dir, "data.xlsx")
 
     # Return error if Excel file is missing
-    if not os.path.exists(file_path):
+    if not os.path.exists(data_path):
         return jsonify({'error':'file not found'}), 404
     
     # Read Excel, replace NaN with empty string, convert to dict
-    df = pd.read_excel(file_path, index_col=None)
+    df = pd.read_excel(data_path, index_col=None)
     df = df.fillna('')
     data_dict = df.to_dict(orient='list')
     
