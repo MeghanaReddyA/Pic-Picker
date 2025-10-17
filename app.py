@@ -30,4 +30,5 @@ def get_updated_date():
 if __name__ == '__main__':
     # Disable caching and run in debug mode for development
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)), debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
