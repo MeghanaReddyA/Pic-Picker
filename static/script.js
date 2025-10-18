@@ -234,7 +234,7 @@ const createSideBarList = function (category, options, iconType, iconName) {
 
 // Fetch categories and options from local server(Excel)
 const fetchXlData = new Promise(function (resolve, reject) {
-    fetch('http://127.0.0.1:5000/data')
+    fetch('/data')
         .then(response => response.json())
         .then(data => resolve(data))
         .catch(error => reject(error));
